@@ -1,0 +1,9 @@
+.formcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.formitem {
+    flex: 200px;
+}

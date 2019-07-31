@@ -1,0 +1,96 @@
+html {
+	font-size: 10px;
+	background-color: #ffffff;
+	color: #7d4427;
+}
+
+.header {
+	text-align: center;
+	text-transform: capitalize;
+	margin-right: 40px;
+	color: #9fa8a3;
+}
+
+.profilepix {
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	width: 50%;
+	border-radius: 50%;
+}
+
+div {
+	background-color: #e3e3e3;
+}
+
+h1, h2, p {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+h1 {
+	font-size: 5rem;
+}
+
+h2 {
+	color: #9fa8a3;
+	font-size: 3.5rem;
+}
+
+p, ul {
+	font-size: 1.5rem;
+	font-weight: bolder;
+}
+
+span {
+	font-size: 1.6rem;
+	font-weight: bolder;
+	color: #2e4600;
+}
+
+.subcolumn {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 640px) {
+	.header {
+		text-align: left;
+		margin-left: 20px;
+	}
+	
+	.mainrow {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+	
+	.subcolumn{
+		flex: 1 100px;
+	}
+	
+	.subcolumn:nth-of-type(3) {
+		flex: 2 200px;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	.mainrow {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	}
+
+	.subcolumn {
+	flex: 1 100px;
+	}
+
+	.subcolumn:nth-of-type(3) {
+	flex: 2 200px;
+	}	
+}
+
