@@ -1,14 +1,9 @@
-var header = document.querySelector('header');
-
-//submitForm function is the function that will use XMLHttpRequest to interact with the backend.
 function submitForm() {
-
+    //Collect email and password so request.body can be populated in backend
     var params = {
     email: document.querySelector('#email').value,
-    password: document.querySelector('#password').value
-};
+    password: document.querySelector('#password').value};
 
-    console.log(params);
     //Send form data to backend and process
     var requestURL = 'http://localhost:8080/api/v1/student/studentLogin';
     var request = new XMLHttpRequest();
@@ -19,26 +14,27 @@ function submitForm() {
     request.onload = function() {
         var answer = request.response;
         console.log(answer);
-        getFeedback(answer);
-    };
-
-    console.log(request);
-
-    function getFeedback(msg) {
-        var newH1 = document.createElement('h1');
-        newH1.innerHTML = 'Success Status: ';
-        header.appendChild(newH1);
-
-        var newP1 = document.createElement('p');
-        newP1.textContent = msg.success;
-        header.appendChild(newP1);
-
-        var newH2 = document.createElement('h2');
-        newH2.textContent = 'Server message: ';
-        header.appendChild(newH2);
-
-        var newP2 = document.createElement('p');
-        newP2.textContent = msg.message;
-        header.appendChild(newP2);
+        console.log(typeof answer.success);
+        console.log(typeof answer.message);
+        if(answer.success === 'true') {
+            window.location.href = '../HTML/singleprofile.html';
+            return;
+        } else if(answer.success === 'false')  {
+            var newList = document.getElementById('error');
+            if(answer.message instanceof Array) {
+                for(let i = 0; i < answer.message.length; i++) {
+                    var listItem = document.createElement('li');
+                    var text = document.createTextNode(answer.message[i]);
+                    listItem.appendChild(text);
+                    newList.appendChild(listItem);
+                }
+            } else {
+                var oneItem = document.createElement('li');
+                var oneText = document.createTextNode(answer.message);
+                oneItem.appendChild(oneText);
+                newList.appendChild(oneItem);
+            };
+            return;
+        }
     };
 }
