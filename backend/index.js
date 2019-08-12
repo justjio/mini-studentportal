@@ -9,7 +9,7 @@ mongoose.connect(student_db_url, {useNewUrlParser: true});
 const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
-app.use('/api/v1/getStudent', studentAPI);
+app.use('/api/v1/student', studentAPI);
 
 const PORT = 8080;
 app.listen(PORT, () => {

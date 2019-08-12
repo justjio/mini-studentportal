@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 100px 100px;
+}
+
+.box1 {
+    float: left;
+    width: 80%;
+}
+
+.box2 {
+    float: left;
+    width: 20%;
+}
