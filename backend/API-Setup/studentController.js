@@ -29,7 +29,17 @@ exports.student = function(req, res) {
 //Dummy controller code for logging in student
 exports.login = [
     (req, res) => {
-        Student.find({email: "b.anifowose@gmail.com", password: "Bolaji.2009"})
+
+        console.log(req.body);
+
+        const student = {
+            email: req.body.email,
+            password: req.body.password
+        };
+
+        console.log(student);
+
+        Student.find(student)
         .exec((err, result) => {
             if(err) {
                 res.status(400).send({

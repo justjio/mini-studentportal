@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+//Import bodyparser because of request coming script in frontend
+const bodyParser = require('body-parser');
+
 const studentAPI = require('./Routes/studentRouters');
 
 const mongoose = require('mongoose');
@@ -8,6 +11,14 @@ const student_db_url = 'mongodb+srv://jiobiagbaDB:obidudu9293@cluster0-ywgnl.azu
 mongoose.connect(student_db_url, {useNewUrlParser: true});
 const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'MongoDB connection error: '));
+
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use('/api/v1/student', studentAPI);
 
