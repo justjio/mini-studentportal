@@ -30,14 +30,10 @@ exports.student = function(req, res) {
 exports.login = [
     (req, res) => {
 
-        console.log(req.body);
-
         const student = {
             email: req.body.email,
             password: req.body.password
         };
-
-        console.log(student);
 
         Student.find(student)
         .exec((err, result) => {

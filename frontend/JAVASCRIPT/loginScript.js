@@ -13,9 +13,6 @@ function submitForm() {
     request.send(JSON.stringify(params));
     request.onload = function() {
         var answer = request.response;
-        console.log(answer);
-        console.log(typeof answer.success);
-        console.log(typeof answer.message);
         if(answer.success === 'true') {
             window.location.href = '../HTML/singleprofile.html';
             return;
