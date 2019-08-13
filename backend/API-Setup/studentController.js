@@ -46,7 +46,6 @@ exports.login = [
         //If there are validation errors, send the errors back to frontend
         if(!errors.isEmpty()) {
             //Return Bad Request Status with message
-            console.log(errors);
             res.status(400).send({
                 success: 'false',
                 message: errors.array()
