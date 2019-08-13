@@ -21,7 +21,7 @@ function submitForm() {
             if(answer.message instanceof Array) {
                 for(let i = 0; i < answer.message.length; i++) {
                     var listItem = document.createElement('li');
-                    var text = document.createTextNode(answer.message[i]);
+                    var text = document.createTextNode(answer.message[i].msg);
                     listItem.appendChild(text);
                     newList.appendChild(listItem);
                 }

@@ -3,15 +3,18 @@
 }
 
 body {
-    padding: 100px 100px;
+    display: flex;
+}
+
+.mainbox {
+    margin: auto;
+    display: flex;
 }
 
 .box1 {
-    float: left;
-    width: 80%;
+ flex: 6;
 }
 
 .box2 {
-    float: left;
-    width: 20%;
+    flex: 1;
 }

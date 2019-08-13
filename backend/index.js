@@ -4,6 +4,9 @@ const app = express();
 //Import bodyparser because of request coming script in frontend
 const bodyParser = require('body-parser');
 
+//Import cookieparser to allow cookie exchange between frontend and backend
+const cookieParser = require('cookie-parser');
+
 const studentAPI = require('./Routes/studentRouters');
 
 const mongoose = require('mongoose');
@@ -13,7 +16,9 @@ const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
+//CORS permission to allow XMLHttpRequest work across different domains
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
