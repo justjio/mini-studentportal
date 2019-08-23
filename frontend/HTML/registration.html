@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="formitem">
-                    <label>Hobbies (at most 5):</label>
+                    <label>Hobbies (Hobby 1, at least, MUST BE FILLED!):</label>
                     <div>
                         <label for="hobby1">Hobby 1: </label>
                         <input type="text" id="hobby1" name="hobby1" required>
@@ -67,13 +67,12 @@
                         <label for="password">Password: </label><br>
                         <input type="password" id="password" name="password">
                     </div>
-                    <div>
-                        <label for="password2">Retype Your Password</label><br>
-                        <input type="password" id="password2" name="password2">
-                    </div>
                 </div>
-                <div class="formitem"><button>Register Me!</button></div>
+                <div class="formitem"><button type="button" id="registerbtn" onclick="return registerStudent()">Register Me!</button></div>
             </form>
         </div>
+        <div><ul id="error"></ul></div>
+
+        <script src="../JAVASCRIPT/registration.js"></script>
     </body>
 </html>

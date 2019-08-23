@@ -89,38 +89,101 @@ exports.login = [
 
 //Dummy controller code for registering 1 student
 exports.student_register_post = [
+    //Validate user data
+    body('firstname', 'Please type in your firstname.').isLength({min: 2}).trim(),
+    body('surname', 'Please type in your surname.').isLength({min: 2}).trim(),
+    body('date_of_birth', 'Your date of birth must be specified.').optional({checkFalsy: true}).isISO8601(),
+    body('hobby1', 'At least 1 hobby must be specified.').isLength({min: 2}).trim(),
+    body('hobby2', 'Type NA if there is no Hobby 2.').isLength({min: 2}).trim(),
+    body('hobby3', 'Type NA if there is no Hobby 3.').isLength({min: 2}).trim(),
+    body('hobby4', 'Type NA if there is no Hobby 4.').isLength({min: 2}).trim(),
+    body('hobby5', 'Type NA if there is no Hobby 5.').isLength({min: 2}).trim(),
+    body('summary', 'A brief summary of you is needed.').isLength({min: 1}).trim(),
+    body('email', 'Please type in your email.').isLength({min: 6}).trim(),
+    body('password', 'Password cannot be left blank and must be at least 7 characters.').isLength({min: 7}).trim(),
+
+    //Sanitize all data
+    sanitizeBody('*').escape(),
+
     (req, res, next) => {
-        const newStudent = new Student({
-            first_name: 'Martha',
-            last_name: 'Michaels',
-            date_of_birth: '2000-12-24',
-            sex: 'Female',
-            hobby1: 'Programming',
-            hobby2: 'Dancing',
-            hobby3: 'Partying',
-            hobby4: 'Cooking',
-            hobby5: 'Travelling',
-            summary: 'Martha Michaels is an outspoken lover of life and enjoyment to the fullest. At a height of 5ft 9inches, she is a tall, beautiful girl with brains.',
-            email: 'marthamichaels2000@yahoo.co.uk',
-            password: 'NAUGHTY.me@2019'
-        });
+        //Collect errors from validation steps
+        const errors = validationResult(req);
 
-        newStudent.save(function (err) {
-            if(err) {
-                res.status(400).send({
-                    success: false,
-                    message: err
-                });
-                return;
-            };
-
-            res.status(200).send({
-                success: true,
-                message: 'Your details have been successfully saved. Thank you.'
+        //Return errors to frontend if any
+        if(!errors.isEmpty()) {
+            //Return Bad Request
+            res.status(400).send({
+                success: 'false',
+                message: errors.array()
             });
             return;
-        });
+        } else {
+            console.log(req.body);
+            //Check if the email inputted by user already exists in database
+            Student.findOne({email: req.body.email}).exec((err, student_present)=> {
+                if(err) {
+                    res.status(400).send({
+                        success: 'false',
+                        message: 'For some reasons, there was an error in the request.'
+                    });
+                    return;
+                } 
+                
+                if(student_present) {
+                    console.log(student_present);
+                    res.status(400).send({
+                        success: 'false',
+                        message: 'It seems you have registered in the past. Please login to access your page.'
+                    });
+                    return;
+                } else if(!student_present) {
+                    //No previous user has this email. Student data can be saved.
+                    //Select the proper sex
+                    let gender;
+                    console.log(req.body.sex);
+                    if(req.body.sex === 'male') {
+                        gender = 'Male';
+                    } else {
+                        gender = 'Female';
+                    };
 
+                    console.log(gender);
+                    //Create a new student object
+                    const newStudent = new Student({
+                        first_name: req.body.firstname,
+                        last_name: req.body.surname,
+                        date_of_birth: req.body.date_of_birth,
+                        sex: gender,
+                        hobby1: req.body.hobby1,
+                        hobby2: req.body.hobby2,
+                        hobby3: req.body.hobby3,
+                        hobby4: req.body.hobby4,
+                        hobby5: req.body.hobby5,
+                        summary: req.body.summary,
+                        email: req.body.email,
+                        password: req.body.password
+                    });
+
+                    console.log(newStudent);
+                    //Save student data
+                    newStudent.save(function (err) {
+                        if(err) {
+                            res.status(400).send({
+                                success: 'false',
+                                message: 'There is a problem saving your data.'
+                            });
+                            return;
+                        };
+            
+                        res.status(200).send({
+                            success: 'true',
+                            message: 'Your details have been successfully saved. Thank you.'
+                        });
+                        return;
+                    });
+                }
+            })
+        }
     }
 
 ];
