@@ -27,4 +27,8 @@ StudentSchema.virtual('age').get(function() {
     return moment().year() - moment(this.date_of_birth).year;
 });
 
+StudentSchema.virtual('url').get(function() {
+    return '/fetchStudentProfile/' + this._id;
+});
+
 module.exports = mongoose.model('Student', StudentSchema);

@@ -69,9 +69,9 @@ exports.login = [
                     });
                     return;
                 }
-                //Save studentID as cookie
-                res.cookie('studentID', result[0]._id);
-
+                //Save studentdata as cookie
+                res.cookie('studentID', result);
+                console.log(result);
                 //Return OK Status with studentResult
                 res.status(200).send({
                     success: 'true',
@@ -137,23 +137,12 @@ exports.student_register_post = [
                     });
                     return;
                 } else if(!student_present) {
-                    //No previous user has this email. Student data can be saved.
-                    //Select the proper sex
-                    let gender;
-                    console.log(req.body.sex);
-                    if(req.body.sex === 'male') {
-                        gender = 'Male';
-                    } else {
-                        gender = 'Female';
-                    };
-
-                    console.log(gender);
                     //Create a new student object
                     const newStudent = new Student({
                         first_name: req.body.firstname,
                         last_name: req.body.surname,
                         date_of_birth: req.body.date_of_birth,
-                        sex: gender,
+                        sex: req.body.sex,
                         hobby1: req.body.hobby1,
                         hobby2: req.body.hobby2,
                         hobby3: req.body.hobby3,

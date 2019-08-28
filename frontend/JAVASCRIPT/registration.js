@@ -1,13 +1,19 @@
 function registerStudent() {
+    //Get the correct sex value
+    let gender = document.getElementsByName('sex');
+    let genderName;
+    for (let k = 0; k < gender.length; k++) {
+        if(gender[k].checked) {
+            genderName = gender[k].value;
+        };
+    };
+
     //Collect student data to request.body
     const params = {
         firstname: document.querySelector('#firstname').value,
         surname: document.querySelector('#surname').value,
         date_of_birth: document.querySelector('#birthday').value,
-        sex: [
-            document.querySelector('#male').value,
-            document.querySelector('#female').value
-        ],
+        sex: genderName,
         hobby1: document.querySelector('#hobby1').value,
         hobby2: document.querySelector('#hobby2').value,
         hobby3: document.querySelector('#hobby3').value,
