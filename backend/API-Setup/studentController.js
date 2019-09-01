@@ -6,28 +6,14 @@ const { sanitizeBody } = require('express-validator');
 
 //Dummy controller function for getting 1 student
 exports.student = function(req, res) {
-    Student.find({sex: "Female"})
-        .exec(function(err, result) {
-            if(err) {
-                res.status(400).send({
-                    success: 'false',
-                    message: err
-                });
-                return;
-            }
-            if(result.length === 0 || result == null) {
-                res.status(404).send({
-                    success: 'false',
-                    message: 'Sorry. No student found with this record.'
-                });
-            } else {
-                res.status(200).send({
-                    success: 'true',
-                    message: 'Student data successfully retrieved.',
-                    studentData: result
-                });
-            }
-        });
+    console.log("Received Cookie: \n", req.cookies);
+    let student = req.cookies;
+    res.status(200).send({
+        success: 'true',
+        message: 'Student data retrieved from cookie.',
+        studentData: student
+    });
+    return;
 };
 
 //Dummy controller code for logging in student
@@ -69,14 +55,11 @@ exports.login = [
                     });
                     return;
                 }
-                //Save studentdata as cookie
-                res.cookie('studentID', result);
-                console.log(result);
                 //Return OK Status with studentResult
                 res.status(200).send({
                     success: 'true',
                     message: 'Student record found',
-                    studentData: result
+                    studentData: result[0]
                 });
                 return;
             });

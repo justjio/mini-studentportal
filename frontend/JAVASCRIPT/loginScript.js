@@ -14,6 +14,8 @@ function submitForm() {
     request.onload = function() {
         var answer = request.response;
         if(answer.success === 'true') {
+            const verifiedStudent = JSON.stringify(answer.studentData);
+            localStorage.setItem('data', verifiedStudent);
             window.location.href = '../HTML/singleprofile.html';
             return;
         } else if(answer.success === 'false')  {

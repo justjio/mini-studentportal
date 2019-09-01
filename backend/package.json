@@ -17,7 +17,8 @@
     "express-validator": "^6.1.1",
     "moment": "^2.24.0",
     "mongoose": "^5.6.7",
-    "mongoose-type-email": "^1.0.11"
+    "mongoose-type-email": "^1.0.11",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

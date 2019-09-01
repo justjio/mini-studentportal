@@ -1,11 +1,17 @@
 const express = require('express');
-const app = express();
-
+const path = require('path');
 //Import bodyparser because of request coming script in frontend
 const bodyParser = require('body-parser');
-
 //Import cookieparser to allow cookie exchange between frontend and backend
 const cookieParser = require('cookie-parser');
+
+const app = express();
+
+
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 const studentAPI = require('./Routes/studentRouters');
 
@@ -15,15 +21,14 @@ mongoose.connect(student_db_url, {useNewUrlParser: true});
 const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
-app.use(bodyParser.json());
-app.use(cookieParser());
-
 //CORS permission to allow XMLHttpRequest work across different domains
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/student', studentAPI);
 
