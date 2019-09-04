@@ -96,3 +96,9 @@ function buildProfile() {
     pContact.appendChild(emailNode);
     contact.appendChild(pContact);//4th div settled
 };
+
+//Function for controlling logging out
+function logOut() {
+    localStorage.removeItem('data');
+    window.location.href = '../HTML/login.html';
+};
