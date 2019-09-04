@@ -5,6 +5,8 @@ const studentController = require('../API-Setup/studentController');
 
 router.get('/fetchStudentProfile', studentController.student);
 
+router.get('/getAllStudents', studentController.allStudents);
+
 router.post('/studentLogin', studentController.login);
 
 router.post('/registerStudentProfile', studentController.student_register_post);

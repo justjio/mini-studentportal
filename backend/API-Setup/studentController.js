@@ -159,3 +159,33 @@ exports.student_register_post = [
     }
 
 ];
+
+exports.allStudents = function (req, res, next) {
+    Student.find({}, 'first_name last_name hobby1 summary email')
+    .exec(
+        (err, allStudents) => {
+            if (err) {
+                res.status(400).send({
+                    success: 'false',
+                    message: 'There was an error retrieving the requested data.'
+                });
+                return;
+            };
+            
+            if (allStudents.length === 0 || allStudents === null) {
+                res.status(404).send({
+                    success: 'false',
+                    message: 'No record was found for the specified query.'
+                });
+                return;
+            };
+
+            res.status(200).send({
+                success: 'true',
+                message: 'All students retrieved successfully.',
+                studentData: allStudents
+            });
+            return;
+        }
+    );
+};

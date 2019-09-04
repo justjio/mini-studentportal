@@ -1,5 +1,6 @@
 //Get data of logged - in student
 const verifiedStudent = JSON.parse(localStorage.data);
+//Build profile of logged  - in student
 buildProfile();
 
 
