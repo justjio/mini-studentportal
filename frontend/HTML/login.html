@@ -20,11 +20,15 @@
                     <label for="password">Password</label><br>
                     <input type="password" id="password" name="password">
                 </div>
-                <div class="btn"><button type="button" id="loginbtn" onclick="return submitForm()">LOGIN</button></div>
+                <div class="btn">
+                    <button type="button" id="loginbtn" onclick="return submitForm()">LOGIN</button>
+                </div>
             </form>
         </div>
         <div id="box2" class="box2">
-            <div class="btn"><button id="registerbtn">REGISTER</button></div>
+            <div class="btn" >
+                <button type="button" id="registerbtn" onclick="return registerUser()">REGISTER</button>
+            </div>
         </div>
     </div>
     <div><ul id="error"></ul></div>

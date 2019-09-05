@@ -103,3 +103,7 @@ function logOut() {
     localStorage.removeItem('data');
     window.location.href = '../HTML/login.html';
 };
+
+function allProfiles () {
+    window.location.href = '../HTML/allprofiles.html';
+}

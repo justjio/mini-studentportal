@@ -1,6 +1,7 @@
 buildAllProfiles();
 
 
+//Main function
 function buildAllProfiles() {
     //GET all data from backend
     const requestURL = 'http://localhost:8080/api/v1/student/getAllStudents';
@@ -39,7 +40,7 @@ function buildAllProfiles() {
                 let summary = newE('div');
                 summary.setAttribute('class','summary');
                 let pSummary = newE('p');
-                let summaryText = `${answer.studentData[i].summary}`;
+                let summaryText = `"${answer.studentData[i].summary}"`;
                 let summaryTextNode = text(summaryText);
                 myAppend(pSummary, summaryTextNode);
                 myAppend(summary, pSummary);
@@ -52,6 +53,10 @@ function buildAllProfiles() {
 
                 //Append maincontainer to body
                 document.body.appendChild(mainContainer);
+
+                //Add a break before next profile
+                let space = newE('br');
+                document.body.appendChild(space);
             };
         }
     };

@@ -36,4 +36,9 @@ function submitForm() {
             return;
         }
     };
-}
+};
+
+
+function registerUser () {
+    window.location.href = '../HTML/registration.html';
+};
