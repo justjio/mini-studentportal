@@ -10,7 +10,50 @@ function buildAllProfiles() {
     request.send();
     request.onload = () => {
         const answer = request.response;
-        console.log(answer.studentData);
+        if(answer.success === 'true') {
+            //Loop through the array of student data and create profiles for each object in the array.
+            for (let i = 0; i < answer.studentData.length; i++) {
+                //Create main container
+                let mainContainer = newE('div');
+                mainContainer.setAttribute('class', 'main_container');
+                
+                //Create header div and attach heading
+                let header = newE('div');
+                header.setAttribute('class', 'header');
+                let h1 = newE('h1');
+                let fullName = `${answer.studentData[i].first_name} ${answer.studentData[i].last_name}`;
+                let fullNameNode = text(fullName);
+                myAppend(h1, fullNameNode);
+                myAppend(header, h1);
+
+                //Create hobbies div and append hobbies
+                let hobbies = newE('div');
+                hobbies.setAttribute('class', 'hobbies');
+                let pH = newE('p');
+                let hobby = `${answer.studentData[i].hobby1}`;
+                let hobbyNode = text(hobby);
+                myAppend(pH, hobbyNode);
+                myAppend(hobbies, pH);
+
+                //Create summary div and append summary
+                let summary = newE('div');
+                summary.setAttribute('class','summary');
+                let pSummary = newE('p');
+                let summaryText = `${answer.studentData[i].summary}`;
+                let summaryTextNode = text(summaryText);
+                myAppend(pSummary, summaryTextNode);
+                myAppend(summary, pSummary);
+
+
+                //Append header, hobbies and summary to maincontainer
+                myAppend(mainContainer, header);
+                myAppend(mainContainer, hobbies);
+                myAppend(mainContainer, summary);
+
+                //Append maincontainer to body
+                document.body.appendChild(mainContainer);
+            };
+        }
     };
 };
 
@@ -19,12 +62,7 @@ function buildAllProfiles() {
 
 
 
-//Function to create new DOM elements with classes
-function newWithClass (el, attr, attrName) {
-    let newElement = document.createElement(el);
-        return newElement.setAttribute(attr, attrName);
-};
-
+//List of other functions
 //Function to create only new DOM element
 function newE (el) {
     return document.createElement(el);
@@ -36,7 +74,7 @@ function text (words) {
 };
 
 //Function to append nodes
-function append (parent, child) {
+function myAppend (parent, child) {
     return parent.appendChild(child);
 };
 
