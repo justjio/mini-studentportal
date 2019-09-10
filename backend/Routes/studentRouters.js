@@ -3,9 +3,10 @@ const router = express.Router();
 
 const studentController = require('../API-Setup/studentController');
 
-router.get('/fetchStudentProfile', studentController.student);
 
 router.get('/getAllStudents', studentController.allStudents);
+
+router.post('/fetchStudentProfile', studentController.student);
 
 router.post('/studentLogin', studentController.login);
 

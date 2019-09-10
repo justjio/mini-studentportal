@@ -106,4 +106,27 @@ function logOut() {
 
 function allProfiles () {
     window.location.href = '../HTML/allprofiles.html';
-}
+};
+
+
+function updateProfile () {
+    const params = {
+        id: verifiedStudent._id
+    };
+
+    console.log(params);
+
+    const requestURL = 'http://localhost:8080/api/v1/student/fetchStudentProfile';
+    const request = new XMLHttpRequest();
+    request.open('POST', requestURL, true);
+    request.responseType = 'json';
+    request.setRequestHeader('Content-type', 'application/json');
+    request.send(JSON.stringify(params));
+    request.onload = () => {
+        const answer = request.response;
+        const studentForUpdate = JSON.stringify(answer.studentData);
+        localStorage.setItem('dataForUpdate', studentForUpdate);
+        window.location.href = '../HTML/updateprofile.html';
+        console.log(answer.studentData);
+    };
+};

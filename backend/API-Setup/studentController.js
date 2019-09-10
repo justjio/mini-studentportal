@@ -6,14 +6,13 @@ const { sanitizeBody } = require('express-validator');
 
 //Dummy controller function for getting 1 student
 exports.student = function(req, res) {
-    console.log("Received Cookie: \n", req.cookies);
-    let student = req.cookies;
-    res.status(200).send({
-        success: 'true',
-        message: 'Student data retrieved from cookie.',
-        studentData: student
+    Student.findById(req.body.id, (err, student) => {
+        res.status(200).send({
+            success: 'true',
+            message: 'Student data retrieved from cookie.',
+            studentData: student
+        });
     });
-    return;
 };
 
 //Dummy controller code for logging in student

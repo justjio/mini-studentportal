@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Update Your Profile</title>
+</head>
+	<body>
+		<div>
+			<form class="formcontainer">
+				<div class="formitem">
+					<label for="firstname">Firstname:</label><br>
+					<input type="text" id="firstname" name="firstname" required>
+				</div>
+				<div class="formitem">
+					<label for="surname">Surname</label><br>
+					<input type="text" id="surname" name="surname" required>
+				</div>
+				<div class="formitem">
+					<label for="birthday">Date of Birth</label><br>
+					<input type="date" id="birthday" name="birthday">
+				</div>
+				<div class="formitem">
+					<label>Sex:</label><br>
+					<div>
+						<label for="male">Male</label>
+						<input type="radio" id="male" name="sex" value="Male">
+					</div>
+					<div>
+						<label for="female">Female</label>
+						<input type="radio" id="female" name="sex" value="Female">
+					</div>
+				</div>
+				<div class="formitem">
+					<label>Hobbies (Hobby 1, at least, MUST BE FILLED!):</label>
+					<div>
+						<label for="hobby1">Hobby 1: </label>
+						<input type="text" id="hobby1" name="hobby1" required>
+					</div>
+					<div>
+						<label for="hobby2">Hobby 2: </label>
+						<input type="text" id="hobby2" name="hobby2">
+					</div>
+					<div>
+						<label for="hobby3">Hobby 3: </label>
+						<input type="text" id="hobby3" name="hobby3">
+					</div>
+					<div>
+						<label for="hobby4">Hobby 4: </label>
+						<input type="text" id="hobby4" name="hobby4">
+					</div>
+					<div>
+						<label for="hobby5">Hobby 5: </label>
+						<input type="text" id="hobby5" name="hobby5">
+					</div>
+				</div>
+				<div class="formitem">
+					<label for="summary">Describe yourself in a few sentences:</label><br>
+					<textarea id="summary" name="summary" rows="5">I am ...</textarea>
+				</div>
+				<div class="formitem">
+					<label for="email">E-mail:</label><br>
+					<input type="email" id="email" name="email">
+				</div>
+				<div class="formitem">
+					<div>
+						<label for="password">Password: </label><br>
+						<input type="password" id="password" name="password">
+					</div>
+				</div>
+				<div class="formitem"><button type="button" id="updatebtn" onclick="return updateStudent()">Update My Profile</button></div>
+			</form>
+		</div>
+		<div><ul id="error"></ul></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+		<script src="../JAVASCRIPT/updateProfile.js"></script>
+	</body>
+</html>

@@ -40,7 +40,7 @@ div {
     font-style: oblique;
 }
 
-.hobbies, .contact, .logout, .allprofiles, .print {
+.hobbies, .contact, .logout, .allprofiles, .print, .update {
     width: 600px;
     height: 35px;
     padding-top: 10px;
