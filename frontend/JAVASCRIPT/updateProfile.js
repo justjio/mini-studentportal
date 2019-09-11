@@ -52,17 +52,24 @@ function updateStudent() {
         hobby5: document.querySelector('#hobby5').value,
         summary: document.querySelector('#summary').value,
         email: document.querySelector('#email').value,
-        password: document.querySelector('#password').value
+        password: document.querySelector('#password').value,
+        id: forUpdate._id
     };
 
     //Send form data for processing by backend app
-    const requestURL = 'http://localhost:8080/api/v1/student/registerStudentProfile';
+    const requestURL = 'http://localhost:8080/api/v1/student/updateStudentProfile';
     const request = new XMLHttpRequest();
     request.open('POST', requestURL, true);
     request.responseType = 'json';
     request.setRequestHeader('Content-type', 'application/json');
     request.send(JSON.stringify(params));
     request.onload = () => {
-        //Do something
+        const answer = request.response;
+        if(answer.success === 'true') {
+            const updatedStudent = JSON.stringify(answer.studentData);
+            localStorage.removeItem('data');
+            localStorage.setItem('data', updatedStudent);
+            window.location.href = '../HTML/singleprofile.html';
+        };
     }
 };

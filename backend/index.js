@@ -18,6 +18,7 @@ const studentAPI = require('./Routes/studentRouters');
 const mongoose = require('mongoose');
 const student_db_url = 'mongodb+srv://jiobiagbaDB:obidudu9293@cluster0-ywgnl.azure.mongodb.net/studentportal?retryWrites=true&w=majority';
 mongoose.connect(student_db_url, {useNewUrlParser: true});
+mongoose.set('useFindAndModify', false);
 const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'MongoDB connection error: '));
 

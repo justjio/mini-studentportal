@@ -7,11 +7,19 @@ const { sanitizeBody } = require('express-validator');
 //Dummy controller function for getting 1 student
 exports.student = function(req, res) {
     Student.findById(req.body.id, (err, student) => {
+        if(err) {
+            res.status(400).send({
+                success: 'false',
+                message: 'There was a problem retrieving the requested data.'
+            });
+            return;
+        };
         res.status(200).send({
             success: 'true',
-            message: 'Student data retrieved from cookie.',
+            message: 'Student data retrieved successfully.',
             studentData: student
         });
+        return;
     });
 };
 
@@ -188,3 +196,66 @@ exports.allStudents = function (req, res, next) {
         }
     );
 };
+
+exports.student_update_post = [
+    //Validate user data
+    body('firstname', 'Please type in your firstname.').isLength({min: 2}).trim(),
+    body('surname', 'Please type in your surname.').isLength({min: 2}).trim(),
+    body('date_of_birth', 'Your date of birth must be specified.').optional({checkFalsy: true}).isISO8601(),
+    body('hobby1', 'At least 1 hobby must be specified.').isLength({min: 2}).trim(),
+    body('hobby2', 'Type NA if there is no Hobby 2.').isLength({min: 2}).trim(),
+    body('hobby3', 'Type NA if there is no Hobby 3.').isLength({min: 2}).trim(),
+    body('hobby4', 'Type NA if there is no Hobby 4.').isLength({min: 2}).trim(),
+    body('hobby5', 'Type NA if there is no Hobby 5.').isLength({min: 2}).trim(),
+    body('summary', 'A brief summary of you is needed.').isLength({min: 1}).trim(),
+    body('email', 'Please type in your email.').isLength({min: 6}).trim(),
+    body('password', 'Password cannot be left blank and must be at least 7 characters.').isLength({min: 7}).trim(),
+
+    //Sanitize all data
+    sanitizeBody('*').escape(),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            res.status(400).send({
+                success: 'false',
+                message: errors.array()
+            });
+            return;
+        }
+
+        const updateStudent = new Student({
+            first_name: req.body.firstname,
+            last_name: req.body.surname,
+            date_of_birth: req.body.date_of_birth,
+            sex: req.body.sex,
+            hobby1: req.body.hobby1,
+            hobby2: req.body.hobby2,
+            hobby3: req.body.hobby3,
+            hobby4: req.body.hobby4,
+            hobby5: req.body.hobby5,
+            summary: req.body.summary,
+            email: req.body.email,
+            password: req.body.password,
+            _id: req.body.id
+        });
+
+        Student.findByIdAndUpdate(req.body.id, updateStudent, {}, (err, updated) => {
+            if (err) {
+                res.status(400).send({
+                    success: 'false',
+                    message: 'Sorry but your record was not successfully updated.'
+                });
+                return;
+            };
+
+            res.status(200).send({
+                success: 'true',
+                message: 'Your record has been successfully updated.',
+                studentData: updateStudent
+            });
+            return;
+        });
+    }
+];

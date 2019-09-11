@@ -12,4 +12,6 @@ router.post('/studentLogin', studentController.login);
 
 router.post('/registerStudentProfile', studentController.student_register_post);
 
+router.post('/updateStudentProfile', studentController.student_update_post);
+
 module.exports = router;
