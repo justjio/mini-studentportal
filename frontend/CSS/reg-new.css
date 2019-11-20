@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: black;
+    background-image: url(../CSS/background1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+img {
+    height: auto;
+    width: 100%;
+}
+
+p, ul, li, a, label, input {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.1rem;
+    color: black;
+    margin: 0;
+    text-decoration: none;
+}
+
+label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    font-style: oblique;
+    color: white;
+    margin: 0;
+    text-decoration: none;   
+}
+
+input, textarea {
+    background-color: transparent;
+}
+.button {
+    border: none;
+    width: 40%;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: green;
+}
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+    font-size: 7rem;
+    letter-spacing: -5px;
+    color: white;
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: lighter;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+section {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    flex-basis: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top, .bottom, .bottom-left {
+    flex-basis: 4%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left .top {
+    background: none;
+}
+
+.bottom-left {
+    padding: 0px 20px 10px 40px;
+    background: none;
+}
+
+.bottom-left p, .bottom-left a {
+    font-size: 1rem;
+    color: white;
+}
+
+.main, .main-left {
+    flex-basis: 92%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    background: white;
+    opacity: 0.7;
+}
+
+.main-a {
+    flex-basis: 70%;
+    padding: 250px 20px 0px 40px;
+}
+
+.main-b {
+    flex-basis: 10%;
+    padding: 0px 20px 40px 40px;
+}
+
+.main-b p, .main-b a {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: white;
+}
+
+.main-c {
+    flex-basis: 20%;
+}
+
+.formitem {
+    padding-top: 2px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-basis: 10%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.radio-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.text, .textarea {
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    width: 65%;
+    border-bottom: solid green 1px;
+}
