@@ -126,8 +126,85 @@ section {
     justify-content: space-evenly;
     flex-basis: 40%;
     display: flex;
+    flex-direction: row;
+    padding: 15px 0px 15px 15px;
+}
+
+.pix {
+    background:burlywood;
+    flex-basis: 290px;
+    padding: 40px 40px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.pix h1 {
+    font-size: 16rem;
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    font-weight: lighter;
+}
+
+
+.info {
+    flex-basis: 414px;
+    display: flex;
     flex-direction: column;
-    padding: 15px 0px;
+}
+
+.info1 h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: burlywood;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+.info p {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+.topper, .bottomer {
+    flex-basis: 7%;
+    margin: 0;
+}
+
+.info1 {
+    flex-basis: 43%;
+    margin: 0;
+    padding: 40px 20px 0px;
+}
+
+.info2 {
+    flex-basis: 43%;
+    margin: 0;
+    display: flex;
+}
+
+.ageinfo, .sexinfo {
+    flex-basis: 20%;
+    padding: 10px 20px;
+}
+
+.hobbyinfo {
+    flex-basis: 60%;
+    padding: 10px 20px;
+}
+
+.info2 h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: grey;
+    font-weight: lighter;
+    font-size: 2rem;
+    opacity: 0.8;
+    padding: 0;
+    margin: 0;
+    padding-top: 4px;
 }
 
 .top, .bottom {

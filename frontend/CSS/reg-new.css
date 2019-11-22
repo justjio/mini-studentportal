@@ -50,7 +50,7 @@ input, textarea {
     padding-bottom: 4px;
     width: 70%;
     background: none;
-    border-bottom: solid red 2px;
+    border-bottom: solid burlywood 2px;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 1.3rem;
 }
@@ -173,7 +173,7 @@ section {
 .button {
     border: none;
     width: 30%;
-    background-color: red;
+    background-color: burlywood;
     color: white;
     text-decoration: none;
     text-align: center;
