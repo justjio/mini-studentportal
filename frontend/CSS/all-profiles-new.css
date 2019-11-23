@@ -15,6 +15,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
+    scrollbar-color: burlywood white;
+
 }
 
 img {
@@ -123,15 +125,77 @@ section {
 .main {
     background: white;
     opacity: 0.92;
-    justify-content: space-evenly;
-    flex-basis: 40%;
-    display: flex;
+    flex-basis: 60%;
     flex-direction: column;
     padding: 15px 0px;
+    overflow-y: scroll;
+}
+
+.summarise {
+    height: 140px;
+    margin: 0;
+    padding: 20px 20px;
+    display: flex;
+}
+
+.letter {
+    flex-basis: 15%;
+    background: burlywood;
+    padding: 20px 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.letter h1 {
+    font-size: 8rem;
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    font-weight: lighter;
+    align-self: center;
+}
+
+.brief {
+    flex-basis: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.c {
+    flex-basis: 35%;
+    padding: 2px 20px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.c p, .c a {
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+.b {
+    flex-basis: 65%;
+    padding: 20px 20px 0px;
+}
+
+.brief h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: burlywood;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+.brief p, .brief a {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    font-style: italic;
+    opacity: 0.6;
 }
 
 .top, .bottom {
-    flex-basis: 30%;
+    flex-basis: 20%;
     display: flex;
     justify-content: space-between;
     padding: 0px 20px 10px 40px;

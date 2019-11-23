@@ -172,6 +172,12 @@ section {
 .topper, .bottomer {
     flex-basis: 7%;
     margin: 0;
+    display: flex;
+    padding-left: 20px;
+}
+
+.bottomer p, .bottomer a {
+    padding-right: 20px;
 }
 
 .info1 {
